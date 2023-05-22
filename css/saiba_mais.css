@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  font-family: roboto;
+  background-color: #f8f8f8;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  width: 800px;
+  font-size: 32px;
+  text-align: center;
+  font-weight: 500;
+  margin: 0 0 40px;
+  text-transform: uppercase;
+}
+
+main {
+  display: grid;
+  gap: 20px;
+  justify-content: center;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 40px;
+}
+
+h2 {
+  font-size: 25px;
+  padding: 7px 17px;
+  border-left: 6px solid;
+  color: #00ff00;
+  font-weight: 500;
+  background-color: #353535;
+  border-radius: 4px 4px 0px 0px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  background-color: white;
+  font-size: 20px;
+  padding: 15px 20px;
+}
+
+.item {
+  height: auto;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,87 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #252525;
+  margin: 0;
+}
+
+header {
+  display: flex;
+}
+
+h1 {
+  text-align: center;
+  flex-grow: 1;
+}
+
+h2 {
+  text-align: center;
+  color: #00ff00;
+  font-weight: 500;
+  font-size: 2em;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 22px;
+  color: #00ff00;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+input {
+  height: 33px;
+  padding: 5px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+input:focus {
+  border: #00ff00 3px solid;
+}
+
+select {
+  outline: none;
+  height: 32px;
+  font-size: 20px;
+}
+
+.container_botao {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.enviar {
+  width: 200px;
+  font-size: 18px;
+  height: 45px;
+  border: none;
+  border-radius: 4px;
+  background-color: #636262;
+  color: #2c2b2b;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 20px;
+}
+
+.enviar:hover {
+  box-sizing: border-box;
+  transition: 0.8s;
+  cursor: pointer;
+  background-color: #00ff00;
+  color: #252525;
+  font-weight: 500;
+  font-size: 21px;
+}

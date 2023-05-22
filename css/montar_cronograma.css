@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  font-family: roboto;
+  background-color: #f6f6f6;
+}
+
+table {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 4px 10px;
+  text-align: left;
+  border: 2px solid #323232;
+  font-size: 18px;
+  text-align: center;
+}
+
+table th {
+  background-color: #00ff00;
+  width: 140px;
+  font-weight: 500;
+  font-size: 19px;
+}
+
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 32px;
+  margin: 0 0 40px;
+}
+
+.remover {
+  width: 36px;
+  height: 36px;
+  color: red;
+  background-color: #252525;
+  border: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.remover:hover {
+  cursor: pointer;
+}
