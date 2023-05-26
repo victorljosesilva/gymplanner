@@ -27,44 +27,67 @@
         </div>
     </nav>
 
-    <h2 class="texto">Lista de Treinos</h1>
-        <div class="tabela">
-            <table>
-                <tr>
-                    <th id="cabeca">Grupo Muscular</th>
-                    <th id="cabeca">Exercício</th>
-                    <th id="cabeca">Serie x Repetição</th>
-                    <th id="cabeca">
-                        Duração
-                        (Intervalo)
-                    </th>
-                    <th id="cabeca">Data</th>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
-        </div>
-        <main>
-            <h3>Escolha Grupo Muscular:</h3>
-            <form>
-                <select>
-                    <option>Selecione</option>
-                    <option value="Braços">Braços</option>
-                    <option value="Peito">Peito</option>
-                    <option value="Abdomem">Abdomem</option>
-                    <option value="Pernas">Pernas</option>
-                    <option value="Costas">Costas</option>
-                    <option value="Ombros">Ombros</option>
-                    <option value="Gluteos">Glúteos</option>
-                </select>
-                <button>selecionar</button>
-            </form>
-        </main>
+    <h2 class="texto">Lista de Treinos</h2>
+    <div class="tabela">
+        <table>
+            <tr>
+                <th id="cabeca">Grupo Muscular</th>
+                <th id="cabeca">Exercício</th>
+                <th id="cabeca">Serie x Repetição</th>
+                <th id="cabeca">
+                    Duração
+                    (Intervalo)
+                </th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <main>
+        <h3>Escolha Grupo Muscular:</h3>
+        <form action="cadastro_exercicio.php" method="GET">
+            <?php
+            // Conexão com o banco de dados (substitua os valores pelos seus próprios)
+            $servername = "localhost";
+            $username = "root";
+            $password = "#userVL2023";
+            $dbname = "gymplanner";
+
+            // Criar conexão
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            // Verificar conexão
+            if ($conn->connect_error) {
+                die("Falha na conexão: " . $conn->connect_error);
+            }
+
+            // Consulta SQL para buscar as categorias únicas
+            $sql = "SELECT DISTINCT categoria FROM exercicios";
+            $result = $conn->query($sql);
+
+            // Verificar se há resultados
+            if ($result->num_rows > 0) {
+                // Gerar as opções do select com base nas categorias
+                echo '<select name="categoria">';
+                echo '<option value="">Selecione</option>';
+                while ($row = $result->fetch_assoc()) {
+                    echo '<option value="' . $row['categoria'] . '">' . $row['categoria'] . '</option>';
+                }
+                echo '</select>';
+                echo '<button type="submit">Selecionar</button>';
+            } else {
+                echo 'Nenhuma categoria encontrada.';
+            }
+
+            // Fechar conexão com o banco de dados
+            $conn->close();
+            ?>
+        </form>
+    </main>
 </body>
 
 </html>

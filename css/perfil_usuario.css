@@ -64,7 +64,9 @@ h1 {
   margin-bottom: 40px;
 }
 
-button {
+.editar,
+.excluir,
+.encerrar {
   width: 300px;
   font-size: 18px;
   padding: 15px 20px;
@@ -77,7 +79,9 @@ button {
   border-radius: 4px;
 }
 
-button:hover {
+.editar:hover,
+.excluir:hover,
+.encerrar:hover {
   box-sizing: border-box;
   transition: 0.8s;
   cursor: pointer;
