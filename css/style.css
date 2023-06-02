@@ -1,14 +1,16 @@
 body {
-  margin-top: 50px;
+  margin: 0;
   display: flex;
-  justify-content: center;
   background-image: url(../img/fotos_site/background.jpeg);
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
+  height: 100vh;
+  justify-content: center;
 }
 
 .form_container {
   display: flex;
+  align-self: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -34,6 +36,12 @@ img {
   padding: 0px;
 }
 
+p {
+  margin: 0 0 10px;
+  color: red;
+  font-size: 1.2rem;
+}
+
 form input:focus {
   border: #00ff00 solid 3px;
 }
@@ -50,6 +58,9 @@ h2 {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   color: #00ff00;
+  margin: 0px;
+  padding: 0px;
+  margin: 15px 0;
 }
 
 form {
@@ -72,6 +83,7 @@ input {
   outline: none;
   font-size: 20px;
   border-radius: 4px;
+  padding: 5px;
 }
 
 .botao-login {
