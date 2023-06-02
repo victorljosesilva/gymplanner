@@ -113,33 +113,21 @@
 
             <br>
             <h3>Escolha a Série:</h3>
-            <select id="serie" name="serie">
-                <?php
-                foreach ($exercicios as $exercicio) {
-                    echo '<option value="' . $exercicio['series'] . '">' . $exercicio['series'] . '</option>';
-                }
-                ?>
-            </select>
+            <?php
+            echo '<input type="number" value="' . $exercicio['series'] . '">' . '</input>';
+            ?>
 
             <br>
             <h3>Escolha a Repetição:</h3>
-            <select id="repeticao" name="repeticao">
-                <?php
-                foreach ($exercicios as $exercicio) {
-                    echo '<input value="' . $exercicio['repeticao'] . '">' . $exercicio['repeticao'] . '</input>';
-                }
-                ?>
-            </select>
+            <?php
+            echo '<input type="number" value="' . $exercicio['repeticao'] . '">' . '</input>';
+            ?>
 
             <br>
             <h3>Escolha o Tempo:</h3>
-            <select id="tempo" name="tempo">
-                <?php
-                foreach ($exercicios as $exercicio) {
-                    echo '<option value="' . $exercicio['tempo'] . '">' . $exercicio['tempo'] . '</option>';
-                }
-                ?>
-            </select>
+            <?php
+            echo '<input type="number" value="' . $exercicio['tempo'] . '">' . '</input type="number">';
+            ?>
 
             <br><br>
             <button type="button" onclick="adicionarExercicio()">Adicionar Exercício</button>
@@ -172,7 +160,6 @@
             document.getElementById('tempo').selectedIndex = 0;
         }
 
-        // Evento de alteração na seleção de categoria
         document.getElementById('categoria').addEventListener('change', function() {
             var categoria = document.getElementById('categoria').value; // Obtém a categoria selecionada
             location.href = 'montar_cronograma.php?categoria=' + encodeURIComponent(categoria);
