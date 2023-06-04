@@ -73,7 +73,7 @@ if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
 	<div class="container_geral">
 		<div class="container1">
 			<div class="container_imagem">
-				<img class="foto_perfil" src="<?php echo $usuario["imagem"]; ?>" id="imagem-perfil" onclick="mostrarBotoesImagem()">
+				<img class="foto_perfil" src="https://img.wattpad.com/2847a54156b8585551507c322a26d2c58a487e0f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f726350555f6446443230756d76513d3d2d3839303633343438322e313631663730643738383739386364353930343838353933353730302e6a7067?s=fit&w=720&h=720" id="imagem-perfil" onclick="mostrarBotoesImagem()">
 				<div class="botoes_imagem" id="botoes-imagem" style="display: none;">
 					<form method="POST" enctype="multipart/form-data">
 						<input type="file" name="imagem" id="imagem" style="display: none;">

@@ -23,7 +23,7 @@
             <a href="saiba_mais.php">Saiba Mais</a>
         </div>
         <div>
-            <a href="perfil_usuario.php"><img src="/img/fotos_site/profile.png" alt="Imagem do usuário"></a>
+            <a href="perfil_usuario.php"><img src="https://img.wattpad.com/2847a54156b8585551507c322a26d2c58a487e0f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f726350555f6446443230756d76513d3d2d3839303633343438322e313631663730643738383739386364353930343838353933353730302e6a7067?s=fit&w=720&h=720" alt="Imagem do usuário"></a>
         </div>
     </nav>
 
@@ -35,18 +35,13 @@
                 <th id="cabeca">Exercício</th>
                 <th id="cabeca">Serie x Repetição</th>
                 <th id="cabeca">Intervalo/pausa</th>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <th id="cabeca">Email</th>
             </tr>
         </table>
     </div>
     <main>
         <h3>Escolha Grupo Muscular:</h3>
-        <form>
+        <form method="POST">
             <?php
             $servername = "localhost";
             $username = "root";
@@ -57,6 +52,23 @@
 
             if ($conn->connect_error) {
                 die("Falha na conexão: " . $conn->connect_error);
+            }
+
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $categoria = $_POST['categoria'];
+                $exercicioId = $_POST['exercicio'];
+                $series = $_POST['serie'];
+                $repeticoes = $_POST['repeticao'];
+                $tempo = $_POST['tempo'];
+                $usuarioId = 1; // Substitua pelo ID de usuário real
+
+                $sql = "INSERT INTO exercicios_usuarios (categoria, nome, series, repeticoes, tempo, usuario_id, email)
+                        VALUES (?, (SELECT nome FROM exercicios WHERE id = ?), ?, ?, ?, ?, ?)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("ssiiisi", $categoria, $exercicioId, $series, $repeticoes, $tempo, $usuarioId, $_SESSION["email"]);
+                $stmt->execute();
+                $stmt->close();
             }
 
             $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
@@ -113,24 +125,18 @@
 
             <br>
             <h3>Escolha a Série:</h3>
-            <?php
-            echo '<input type="number" value="' . $exercicio['series'] . '">' . '</input>';
-            ?>
+            <input type="number" name="serie" value="<?php echo isset($exercicio['series']) ? $exercicio['series'] : ''; ?>">
 
             <br>
             <h3>Escolha a Repetição:</h3>
-            <?php
-            echo '<input type="number" value="' . $exercicio['repeticao'] . '">' . '</input>';
-            ?>
+            <input type="number" name="repeticao" value="<?php echo isset($exercicio['repeticao']) ? $exercicio['repeticao'] : ''; ?>">
 
             <br>
             <h3>Escolha o Tempo:</h3>
-            <?php
-            echo '<input type="number" value="' . $exercicio['tempo'] . '">' . '</input type="number">';
-            ?>
+            <input type="number" name="tempo" value="<?php echo isset($exercicio['tempo']) ? $exercicio['tempo'] : ''; ?>">
 
             <br><br>
-            <button type="button" onclick="adicionarExercicio()">Adicionar Exercício</button>
+            <button type="submit">Adicionar Exercício</button>
         </form>
     </main>
 
@@ -147,17 +153,20 @@
             var colunaExercicio = novaLinha.insertCell();
             var colunaSerieRepeticao = novaLinha.insertCell();
             var colunaDuracao = novaLinha.insertCell();
+            var colunaEmail = novaLinha.insertCell();
 
             colunaGrupoMuscular.textContent = document.getElementById('categoria').value;
             colunaExercicio.textContent = exercicioSelecionado;
             colunaSerieRepeticao.textContent = document.getElementById('serie').value + ' x ' + document.getElementById('repeticao').value;
             colunaDuracao.textContent = document.getElementById('tempo').value + ' min';
+            colunaEmail.textContent = document.getElementById('email').value;
 
             // Limpa os campos de seleção
             exercicioSelect.selectedIndex = 0;
             document.getElementById('serie').selectedIndex = 0;
             document.getElementById('repeticao').selectedIndex = 0;
             document.getElementById('tempo').selectedIndex = 0;
+            document.getElementById('email').value = '';
         }
 
         document.getElementById('categoria').addEventListener('change', function() {
